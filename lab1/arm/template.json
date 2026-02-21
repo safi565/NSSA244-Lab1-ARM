@@ -56,7 +56,7 @@
             "name": "[parameters('sshPublicKeys_WEB1_key_0131_name')]",
             "location": "canadacentral",
             "properties": {
-                "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCfdhsMvdSZISEHoQoZdYLMF2eBkmL6G5VYfgmgZa/SKJUm09p5iROtIBzqYO/IVhES59f6Es16B0dAqkitzdR9Tk/3SzLCFIHhs5qem7MLUDMUDIy8/WwmiD7YghoqkqMYvIS8Ka56qIlAw8hYidxvvYzA2A5KNL82W0aux7rSjD1FQyYNB4AZ9/lyqCo2ePPtSV11XSL7wQXB5xObd+BLrmL46xE0Ikg8K9YiDHfO1YMDLZeYlBDp/5nuts0NKPIqlU+UPihZpOMfuVk/Kiv7uehcuAqUj3jGZAo0a1KIdTWlXbThRqwb8D3cds7nzTSQLX3v4EAggYqzS6lheAobz1RegFf89gyscQjwleZ1TTEtziD9r2cfv3dMpb5aBGFkUsyjdNOkKxnNHHiSyeZ2o9khe7vl4oHNgE5R+GTVA/cD2+gVMtvh4ryEmeeOtpd4nGa9v07G4iiY22FdP1JtPFCKMYApdwOqcxAG+7MV+aKLgBdU5+rsAQu9vxyyGt0= generated-by-azure"
+                "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCdrvTv4ea1RKiwDA9dYb7Om9CHa8+9kUfnjnLPxlgdwPEC4kbP26R8dAaxJBfy9nroB4h41bX8jtZLDnLVK7uJV68BcAxO9H8qwuVDucLmHNEba1B+dkSQ4d6+eAqM+A0TLUYV77T0S66QADfHRx0VrGK0iRU8zzkbJISmsz6NUX5vt70pfHab6vNu6OpwCKQf7MKwoUea8268FueM0xLjlqCO2v606Lg8G1jYCWCVjdtRMs29hHFTUvbOn+SVpdBG2U/8TwuS7tQcjuwJGnK3Gdy4Wjf30Wrb+JmwjTy3E4ypapgxk0pXY2vWWn3LH82OrvkTsuXOeeVP3xQ6lX9MUHmPz2P6i7mg2wWsD/HJNjXqjVndwj/zO2QUdagz5RRaozZ1wG263sLbLabZieh17qIXdnaPPfK1JvI2CAi4HCvPyP++x7p9wi2SZYBX8mHfgSML3g1gQJstdo7tfNCuAEGIqAWl2X0DZKEnd265pnO2TNeNICVf9P+xj60stGE= generated-by-azure"
             }
         },
         {
