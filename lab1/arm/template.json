@@ -37,10 +37,6 @@
         "networkInterfaces_web2_name": {
         "type": "string",
         "defaultValue": "web2-nic"
-        },
-        "publicIPAddresses_web2_name": {
-        "type": "string",
-        "defaultValue": "web2-ip"
         }
     },
     "variables": {},
@@ -453,20 +449,6 @@
                 "auxiliarySku": "None"
             }
         },
-
-        {
-            "type": "Microsoft.Network/publicIPAddresses",
-            "apiVersion": "2024-07-01",
-            "name": "[parameters('publicIPAddresses_web2_name')]",
-            "location": "canadacentral",
-            "sku": {
-                "name": "Basic"
-            },
-            "properties": {
-                "publicIPAllocationMethod": "Dynamic"
-            }
-        },
-
         {
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2024-07-01",
