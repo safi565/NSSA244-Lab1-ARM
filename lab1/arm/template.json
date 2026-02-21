@@ -431,7 +431,12 @@
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_VNET_LAB1_name'), 'SUBNET-WEB')]"
                             },
                             "primary": true,
-                            "privateIPAddressVersion": "IPv4"
+                            "privateIPAddressVersion": "IPv4",
+                            "loadBalancerBackendAddressPools": [
+                                {
+                                    "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', 'LB-LAB2', 'LBBackendPool')]"
+                                }
+                            ]
                         }
                     }
                 ],
@@ -468,7 +473,12 @@
                         "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_VNET_LAB1_name'), 'SUBNET-WEB')]"
                     },
                     "primary": true,
-                    "privateIPAddressVersion": "IPv4"
+                    "privateIPAddressVersion": "IPv4",
+                    "loadBalancerBackendAddressPools": [
+                                {
+                                    "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', 'LB-LAB2', 'LBBackendPool')]"
+                                }
+                            ]
                     }
                 }
                 ],
@@ -477,6 +487,70 @@
                 "networkSecurityGroup": {
                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_NSG_WEB_name'))]"
                 }
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "apiVersion": "2022-11-01",
+            "name": "LB-LAB2-ip",
+            "location": "canadacentral",
+            "sku": { "name": "Standard" },
+            "properties": {
+                "publicIPAllocationMethod": "Static"
+            }
+        },
+        {
+            "type": "Microsoft.Network/loadBalancers",
+            "apiVersion": "2022-11-01",
+            "name": "LB-LAB2",
+            "location": "canadacentral",
+            "sku": { "name": "Standard" },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', 'LB-LAB2-ip')]"
+            ],
+            "properties": {
+                "frontendIPConfigurations": [
+                {
+                    "name": "LBFrontend",
+                    "properties": {
+                    "publicIPAddress": {
+                        "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'LB-LAB2-ip')]"
+                    }
+                    }
+                }
+                ],
+                "backendAddressPools": [
+                { "name": "LBBackendPool" }
+                ],
+                "probes": [
+                {
+                    "name": "HTTPProbe",
+                    "properties": {
+                    "protocol": "Http",
+                    "port": 80,
+                    "requestPath": "/"
+                    }
+                }
+                ],
+                "loadBalancingRules": [
+                {
+                    "name": "HTTPRule",
+                    "properties": {
+                    "frontendIPConfiguration": {
+                        "id": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', 'LB-LAB2', 'LBFrontend')]"
+                    },
+                    "backendAddressPool": {
+                        "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', 'LB-LAB2', 'LBBackendPool')]"
+                    },
+                    "probe": {
+                        "id": "[resourceId('Microsoft.Network/loadBalancers/probes', 'LB-LAB2', 'HTTPProbe')]"
+                    },
+                    "protocol": "Tcp",
+                    "frontendPort": 80,
+                    "backendPort": 80
+                    }
+                }
+                ]
             }
         }
     ]
